@@ -1,2 +1,13 @@
 <h1>Categories#show</h1>
 <p>Find me in app/views/categories/show.html.erb</p>
+
+<% @divisions.each do |division| %>
+<%= division.title %>
+<% end %>
+
+
+<%= @category.title %>
+
+<% @category.products.each do |p| %>
+<%= p.title %>
+<% end %>

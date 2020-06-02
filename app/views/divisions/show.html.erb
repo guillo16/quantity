@@ -1,2 +1,7 @@
 <h1>Divisions#show</h1>
 <p>Find me in app/views/divisions/show.html.erb</p>
+<h1><%= @division.title %></h1>
+
+<% @division.categories.each do |g| %>
+<%= g.title %>
+<% end %>

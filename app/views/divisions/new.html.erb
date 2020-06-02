@@ -1,2 +1,4 @@
-<h1>Divisions#new</h1>
-<p>Find me in app/views/divisions/new.html.erb</p>
+<%= simple_form_for @division do |f| %>
+<%= f.input :title %>
+<%= f.submit %>
+<% end %>
