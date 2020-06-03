@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     elsif params["flavor"]
       @products = Product.where(flavor: params["flavor"])
     elsif params["condition"]
-      @products = Product.where(condition: params["condition"])
+      @products = @category.products.where(condition: params["condition"])
     elsif params["min_price"]
       @products = @category.products.where("price_cents BETWEEN ? AND ?", params["min_price"], params["max_price"]).order(price_cents: :desc)
     else
