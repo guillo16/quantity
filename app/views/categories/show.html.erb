@@ -1,13 +1,46 @@
 <h1>Categories#show</h1>
 <p>Find me in app/views/categories/show.html.erb</p>
 
-<% @divisions.each do |division| %>
-<%= division.title %>
-<% end %>
+<div class="text-center pb-5">
+  <% @divisions.each do |division| %>
+  <%= division.title %>
+  <% end %>
+</div>
+
+<div class="category-container">
+  <div>
+    <h3>Categorias:</h3>
+    <h1><%= @category.title %></h1>
+    <p></p>
+    <% division_title =  @category.division.title %>
+    <% category_links = @categories.filter { |category| category.division.title == division_title } %>
+    <% category_links.each do |g| %>
+    <%= link_to category_path(g) do  %>
+
+    <h2><%= g.title %></h2>
+    <% end %>
+    <% g.products.each do |p| %>
+    <p><%= p.title %></p>
+    <% end %>
+    <% end %>
+    <h2>Filtros</h2>
+
+    <%= link_to category_path(created_at: :desc),class: 'dropdown-item' do %>
+    Lo mas reciente
+    <% end %>
+  </div>
+  <div>
+
+    <% @category.products.each do |p| %>
+    <%= p.title %>
+    <% end %>
+  </div>
+</div>
 
 
-<%= @category.title %>
 
-<% @category.products.each do |p| %>
-<%= p.title %>
-<% end %>
+
+
+
+
+

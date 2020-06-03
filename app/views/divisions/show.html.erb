@@ -3,5 +3,5 @@
 <h1><%= @division.title %></h1>
 
 <% @division.categories.each do |g| %>
-<%= g.title %>
+<%=link_to g.title , category_path(g) %>
 <% end %>
