@@ -7,7 +7,7 @@
   <% end %>
 </div>
 
-<div class="category-container">
+<div class="category-container d-flex justify-content-around">
   <div>
     <h3>Categorias:</h3>
     <h1><%= @category.title %></h1>
@@ -24,6 +24,13 @@
     <% end %>
     <% end %>
     <h2>Filtros</h2>
+    <% @category.products.each do |r| %>
+    <h5><%= link_to r.flavor, category_path(flavor: r.flavor)%></h5>
+
+    <% end %>
+
+    <h5><%= link_to category_path(condition: 'Celiaco')do %> Celiaco<% end %></h5>
+
 
     <%= link_to category_path(created_at: :desc),class: 'dropdown-item' do %>
     Lo mas reciente
@@ -31,8 +38,8 @@
   </div>
   <div>
 
-    <% @category.products.each do |p| %>
-    <%= p.title %>
+    <% @products.each do |p| %>
+    <p><%= p.title %></p>
     <% end %>
   </div>
 </div>
