@@ -8,8 +8,8 @@ class CategoriesController < ApplicationController
       @products = Product.where(flavor: params["flavor"])
     elsif params["condition"]
       @products = @category.products.where(condition: params["condition"])
-    elsif params["min_price"]
-      @products = @category.products.where("price_cents BETWEEN ? AND ?", params["min_price"], params["max_price"]).order(price_cents: :desc)
+    elsif params[:price]
+      @products = @category.products.where("price <= ?", params[:price]).reverse_order
     else
       @products
     end
